@@ -8,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class LoginTest {
+public class TestLogin {
     public static LoginPage loginPage;
     //public static ProfilePage profilePage;
     public static WebDriver driver;
@@ -23,7 +23,6 @@ public class LoginTest {
         //создание экземпляра драйвера
         driver = new ChromeDriver();
         loginPage = new LoginPage(driver);
-        //profilePage = new ProfilePage(driver);
         //окно разворачивается на полный экран
         driver.manage().window().maximize();
         //задержка на выполнение теста = 10 сек.
@@ -43,10 +42,7 @@ public class LoginTest {
         //нажимаем кнопку входа
         loginPage.clickLoginBtn();
 
-        //получаем отображаемый логин
-//        String user = profilePage.getUserName();
-//        //и сравниваем его с логином из файла настроек
-//        Assert.assertEquals(ConfProperties.getProperty("login"), user);
+
     }
 
     @AfterClass
@@ -54,6 +50,5 @@ public class LoginTest {
 //        profilePage.entryMenu();
 //        profilePage.userLogout();
         Thread.sleep(3000);
-        driver.close();
         driver.quit(); }
 }
