@@ -1,26 +1,38 @@
 package org.example;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
 public class ConfProperties {
-    protected static FileInputStream fileInputStream;
-    protected static Properties PROPERTIES;
+
+    private static FileInputStream fileInputStream;
+    private static Properties properties;
+    private final static String PATH_TO_CONFIG = "src/test/resources/conf.properties";
 
     static {
         try {
-            //указание пути до файла с настройками
-            fileInputStream = new FileInputStream("src/test/resources/conf.properties");
-            PROPERTIES = new Properties();
-            PROPERTIES.load(fileInputStream);
+            fileInputStream = new FileInputStream(PATH_TO_CONFIG);
+            properties = new Properties();
+            properties.load(fileInputStream);
+        } catch (FileNotFoundException e) {
+            System.out.println("Ошибка, файл не найден!");
+            e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();             //обработка возможного исключения (нет файла и т.п.)
+            System.out.println("Ошибка, что-то пошло не так");
+            e.getMessage();
+            e.printStackTrace();
         } finally {
             if (fileInputStream != null)
                 try {
                     fileInputStream.close();
+                } catch (FileNotFoundException e) {
+                    System.out.println("Ошибка, файл не найден!");
+                    e.printStackTrace();
                 } catch (IOException e) {
+                    System.out.println("Ошибка, что-то пошло не так");
+                    e.getMessage();
                     e.printStackTrace();
                 }
         }
@@ -30,6 +42,6 @@ public class ConfProperties {
      * метод для возврата строки со значением из файла с настройками
      */
     public static String getProperty(String key) {
-        return PROPERTIES.getProperty(key);
+        return properties.getProperty(key);
     }
 }
