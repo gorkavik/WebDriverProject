@@ -1,5 +1,8 @@
 package org.example;
 
+import org.example.helpers.ConfProperties;
+import org.example.helpers.HomePage;
+import org.example.helpers.LoginPage;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
