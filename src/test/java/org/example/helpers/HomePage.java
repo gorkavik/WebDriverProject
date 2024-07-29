@@ -6,24 +6,27 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class HomePage {
+
     public WebDriver driver;
+
     public HomePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
-        this.driver = driver; }
+        this.driver = driver;
+    }
 
-    @FindBy(className="title")
+    @FindBy(className = "title")
     private WebElement pageTitle;
 
     @FindBy(xpath = "//*[@id=\"item_4_title_link\"]/div")
     private WebElement firstElement;
 
 
-
-    public String getPageTitle(){
+    public String getPageTitle() {
         return pageTitle.getText();
     }
 
-    public String getFirstItem(){return firstElement.getText();
+    public String getFirstItem() {
+        return firstElement.getText();
 
     }
 }

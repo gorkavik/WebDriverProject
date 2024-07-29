@@ -44,4 +44,12 @@ public class ConfProperties {
     public static String getProperty(String key) {
         return properties.getProperty(key);
     }
+
+    public static String getLogin() {
+        return properties.getProperty("login");
+    }
+
+    public static String getPassword() {
+        return properties.getProperty("password");
+    }
 }

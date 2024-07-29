@@ -43,27 +43,24 @@ public class InOrderTest {
 
     @Test
     @Order(2)
-    public  void softAssertTest() {
+    public void softAssertTest() {
         String getFirstElement = homePage.getFirstItem();
         Verify.verify(getFirstElement.equals(FIRST_ELEMENT), ERROR_MESSAGE_SOFT_ASSERT);
-        System.out.println("Continue soft assert test");
     }
 
     @Test
     @Order(1)
-    public  void softAssertSecondTest() {
+    public void softAssertSecondTest() {
         String getFirstElement = homePage.getFirstItem();
         SoftAssertions softAssertions = new SoftAssertions();
         softAssertions.assertThat(getFirstElement.equals(FIRST_ELEMENT));
-        System.out.println("Continue soft assert second test");
     }
 
     @Test
     @Order(3)
-    public  void hardAssertTest() {
+    public void hardAssertTest() {
         String getFirstElement = homePage.getFirstItem();
         Assert.assertEquals(getFirstElement, FIRST_ELEMENT_WRONG, ERROR_MESSAGE_HARD_ASSERT);
-        System.out.println("Continue hard assert test");
     }
 
     @AfterAll

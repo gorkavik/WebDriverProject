@@ -36,9 +36,7 @@ public class LoginTest {
 
     @Test
     public void loginTest() {
-        loginPage.inputLogin(ConfProperties.getProperty("login"));
-        loginPage.inputPasswd(ConfProperties.getProperty("password"));
-        loginPage.clickLoginBtn();
+        loginPage.loginFromProperties();
 
         String getPageTitle = homePage.getPageTitle();
         Assert.assertEquals(ERROR_MESSAGE_AFTER_LOGIN, expectedHomePageTitle, getPageTitle);
