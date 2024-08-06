@@ -36,7 +36,7 @@ public class LoginTest {
 
     @Test
     public void loginTest() {
-        loginPage.loginFromProperties();
+        loginPage.login();
 
         String getPageTitle = homePage.getPageTitle();
         Assert.assertEquals(ERROR_MESSAGE_AFTER_LOGIN, expectedHomePageTitle, getPageTitle);

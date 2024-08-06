@@ -15,14 +15,15 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import static org.example.helpers.Issues.ERROR_MESSAGE_HARD_ASSERT;
+import static org.example.helpers.Issues.ERROR_MESSAGE_SOFT_ASSERT;
+import static org.example.helpers.Properties.WEBDRIVER_PROPERTY;
+
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class InOrderTest {
 
-    private static final String ERROR_MESSAGE_HARD_ASSERT = "Hard assert error - не совпадает";
-    private static final String ERROR_MESSAGE_SOFT_ASSERT = "Soft assert error - не совпадает";
-    private static final String WEBDRIVER_PROPERTY = "webdriver.chrome.driver";
-    private static final String FIRST_ELEMENT_WRONG = "Sauce Labs New Backpack";
-    private static final String FIRST_ELEMENT = "Sauce Labs Backpack";
+    private final String FIRST_ELEMENT_WRONG = "Sauce Labs New Backpack";
+    private final String FIRST_ELEMENT = "Sauce Labs Backpack";
 
     public static LoginPage loginPage;
     public static HomePage homePage;
@@ -36,9 +37,7 @@ public class InOrderTest {
         homePage = new HomePage(driver);
         driver.manage().window().maximize();
         driver.get(ConfProperties.getProperty("loginpage"));
-        loginPage.inputLogin(ConfProperties.getProperty("login"));
-        loginPage.inputPasswd(ConfProperties.getProperty("password"));
-        loginPage.clickLoginBtn();
+        loginPage.login();
     }
 
     @Test

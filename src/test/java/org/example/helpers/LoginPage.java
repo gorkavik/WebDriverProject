@@ -35,7 +35,7 @@ public class LoginPage {
         loginBtn.click();
     }
 
-    public void loginFromProperties() {
+    public void login() {
         inputLogin(ConfProperties.getLogin());
         inputPasswd(ConfProperties.getPassword());
         clickLoginBtn();
