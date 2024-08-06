@@ -1,6 +1,10 @@
 package org.example;
 
+import org.example.helpers.ConfProperties;
+import org.example.helpers.HomePage;
+import org.example.helpers.LoginPage;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -9,51 +13,37 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
 
 public class LoginTest {
-    public static LoginPage loginPage;
-    //public static ProfilePage profilePage;
-    public static WebDriver driver;
 
-    /**
-     * осуществление первоначальной настройки
-     */
+    private static final String ERROR_MESSAGE_AFTER_LOGIN = "Пользователь не вошел";
+    private static final String WEBDRIVER_PROPERTY = "webdriver.chrome.driver";
+
+    public static LoginPage loginPage;
+    public static HomePage homePage;
+    public static WebDriver driver;
+    private static String expectedHomePageTitle = "Products";
+
     @BeforeClass
     public static void setup() {
-        //определение пути до драйвера и его настройка
-        System.setProperty("webdriver.chrome.driver", ConfProperties.getProperty("chromedriver"));
-        //создание экземпляра драйвера
+
+        System.setProperty(WEBDRIVER_PROPERTY, ConfProperties.getProperty("chromedriver"));
         driver = new ChromeDriver();
         loginPage = new LoginPage(driver);
-        //profilePage = new ProfilePage(driver);
-        //окно разворачивается на полный экран
+        homePage = new HomePage(driver);
         driver.manage().window().maximize();
-        //задержка на выполнение теста = 10 сек.
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        //получение ссылки на страницу входа из файла настроек
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         driver.get(ConfProperties.getProperty("loginpage"));
     }
 
     @Test
     public void loginTest() {
-        //значение login/password берутся из файла настроек по аналогии с chromedriver и loginpage
+        loginPage.login();
 
-        //вводим логин
-        loginPage.inputLogin(ConfProperties.getProperty("login"));
-        //вводим пароль
-        loginPage.inputPasswd(ConfProperties.getProperty("password"));
-        //нажимаем кнопку входа
-        loginPage.clickLoginBtn();
-
-        //получаем отображаемый логин
-//        String user = profilePage.getUserName();
-//        //и сравниваем его с логином из файла настроек
-//        Assert.assertEquals(ConfProperties.getProperty("login"), user);
+        String getPageTitle = homePage.getPageTitle();
+        Assert.assertEquals(ERROR_MESSAGE_AFTER_LOGIN, expectedHomePageTitle, getPageTitle);
     }
 
     @AfterClass
-    public static void tearDown() throws InterruptedException{
-//        profilePage.entryMenu();
-//        profilePage.userLogout();
-        Thread.sleep(3000);
-        driver.close();
-        driver.quit(); }
+    public static void tearDown() {
+        driver.quit();
+    }
 }
