@@ -3,10 +3,10 @@ package org.example;
 import org.example.helpers.ConfProperties;
 import org.example.helpers.HomePage;
 import org.example.helpers.LoginPage;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -22,8 +22,8 @@ public class LoginTest {
     public static WebDriver driver;
     private static String expectedHomePageTitle = "Products";
 
-    @BeforeClass
-    public static void setup() {
+    @BeforeEach
+    public void setup() {
 
         System.setProperty(WEBDRIVER_PROPERTY, ConfProperties.getProperty("chromedriver"));
         driver = new ChromeDriver();
@@ -39,10 +39,10 @@ public class LoginTest {
         loginPage.login();
 
         String getPageTitle = homePage.getPageTitle();
-        Assert.assertEquals(ERROR_MESSAGE_AFTER_LOGIN, expectedHomePageTitle, getPageTitle);
+        Assertions.assertEquals(ERROR_MESSAGE_AFTER_LOGIN, expectedHomePageTitle, getPageTitle);
     }
 
-    @AfterClass
+    @AfterAll
     public static void tearDown() {
         driver.quit();
     }

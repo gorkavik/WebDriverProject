@@ -5,8 +5,8 @@ import org.assertj.core.api.SoftAssertions;
 import org.example.helpers.ConfProperties;
 import org.example.helpers.HomePage;
 import org.example.helpers.LoginPage;
-import org.junit.Assert;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -59,7 +59,7 @@ public class InOrderTest {
     @Order(3)
     public void hardAssertTest() {
         String getFirstElement = homePage.getFirstItem();
-        Assert.assertEquals(getFirstElement, FIRST_ELEMENT_WRONG, ERROR_MESSAGE_HARD_ASSERT);
+        Assertions.assertEquals(getFirstElement, FIRST_ELEMENT_WRONG, ERROR_MESSAGE_HARD_ASSERT);
     }
 
     @AfterAll
