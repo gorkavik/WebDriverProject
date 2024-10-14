@@ -17,11 +17,6 @@ public class LoginSelenideTest {
 
     private static String expectedHomePageTitle = "Products";
 
-    @BeforeAll
-    public static void setup() {
-        Configuration.browserSize = String.valueOf(true);
-    }
-
     @Test
     public void loginTest() {
         open(ConfProperties.getLoginPage());
@@ -30,10 +25,5 @@ public class LoginSelenideTest {
 
         String getPageTitle = $(By.className("title")).getText();
         Assertions.assertEquals(expectedHomePageTitle, getPageTitle, ERROR_MESSAGE_AFTER_LOGIN);
-    }
-
-    @AfterAll
-    public static void tearDown() {
-        closeWebDriver();
     }
 }

@@ -22,11 +22,6 @@ public class PracticeFormTest {
     private String FILE_PATH_FOR_UPLOAD = "src/test/resources/2024-08-14 12.50.26.jpg";
     private String expectedModalTitle = "Thanks for submitting the form";
 
-    @BeforeAll
-    public static void setup() {
-        Configuration.browserSize = String.valueOf(true);
-    }
-
     @Test
     public void fillPracticeFormTest() {
         open(PRACTICE_FORM_SELENIDE);
@@ -47,10 +42,5 @@ public class PracticeFormTest {
                 $(By.xpath("//div[@class=\"modal-dialog modal-lg\"]//div[@id=\"example-modal-sizes-title-lg\"]"));
         String getModalTitle = modalTitle.getText();
         Assertions.assertEquals(expectedModalTitle, getModalTitle, ERROR_MESSAGE_GENERAL);
-    }
-
-    @AfterAll
-    public static void tearDown() {
-        closeWebDriver();
     }
 }
