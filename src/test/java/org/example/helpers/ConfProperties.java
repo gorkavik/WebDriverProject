@@ -5,11 +5,12 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
+import static org.example.helpers.Properties.PATH_TO_CONFIG;
+
 public class ConfProperties {
 
     private static FileInputStream fileInputStream;
     private static Properties properties;
-    private final static String PATH_TO_CONFIG = "src/test/resources/conf.properties";
 
     static {
         try {
@@ -38,9 +39,6 @@ public class ConfProperties {
         }
     }
 
-    /**
-     * метод для возврата строки со значением из файла с настройками
-     */
     public static String getProperty(String key) {
         return properties.getProperty(key);
     }
@@ -52,4 +50,6 @@ public class ConfProperties {
     public static String getPassword() {
         return properties.getProperty("password");
     }
+
+    public static String getLoginPage() { return properties.getProperty("loginpage"); }
 }
