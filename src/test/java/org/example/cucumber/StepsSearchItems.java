@@ -19,27 +19,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class Steps {
+public class StepsSearchItems {
 
-    private static final Logger log = LoggerFactory.getLogger(Steps.class);
+    private static final Logger log = LoggerFactory.getLogger(StepsSearchItems.class);
 
-    @Допустим("^открыта страница \"([^\"]*)\"$")
+    @Допустим("^открыта домашняя страница \"([^\"]*)\"$")
     public void openPage(String pageUrl) {
         open(pageUrl);
         getWebDriver().manage().window().maximize();
         String currentPageUrl = getWebDriver().getCurrentUrl();
         assertEquals(pageUrl, currentPageUrl, "Адреса не совпадают");
-    }
-
-    @Когда("^выполнено нажатие на ссылку \"([^\"]*)\"$")
-    public void clickOnLink(String link) {
-        $(By.xpath("//*[contains(text(),\"" + link + "\")]")).click();
-    }
-
-    @Тогда("^цена книги равна \"([^\"]*)\"$")
-    public void checkPrice(String price) {
-        String actualPrice = $(By.xpath("//*[@class=\"product-price\"]/span")).getText();
-        assertTrue(actualPrice.contains(price), "Цена не совпадает");
     }
 
     @Когда("в поле поиска введено значение {string}")
