@@ -12,10 +12,13 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <selenium.version>4.23.0</selenium.version>
-        <jupiter.version>5.10.2</jupiter.version>
+        <selenium.version>4.25.0</selenium.version>
+        <jupiter.version>5.11.2</jupiter.version>
         <selenide.version>7.4.0</selenide.version>
         <slf4j.version>2.0.13</slf4j.version>
+        <slf4jjdk.version>2.0.16</slf4jjdk.version>
+        <cucumberjava.version>7.20.1</cucumberjava.version>
+        <cucumberjunit.version>7.20.1</cucumberjunit.version>
     </properties>
 
     <dependencies>
@@ -49,6 +52,26 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumberjava.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>${cucumberjunit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-jdk14</artifactId>
+            <version>${slf4jjdk.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>
