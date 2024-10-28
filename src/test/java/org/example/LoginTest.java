@@ -39,7 +39,7 @@ public class LoginTest {
         loginPage.login();
 
         String getPageTitle = homePage.getPageTitle();
-        Assertions.assertEquals(ERROR_MESSAGE_AFTER_LOGIN, expectedHomePageTitle, getPageTitle);
+        Assertions.assertEquals( expectedHomePageTitle, getPageTitle, ERROR_MESSAGE_AFTER_LOGIN);
     }
 
     @AfterAll
