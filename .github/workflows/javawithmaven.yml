@@ -11,8 +11,12 @@ name: Java CI with Maven
 on:
   push:
     branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+    workflow_dispatch:
+    inputs:
+      test_class:
+        description: 'The test class to run (optional)'
+        required: false
+        default: ''
 
 jobs:
   build:
@@ -30,8 +34,18 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    - name: Build with Maven
-      run: mvn clean install
+    - name: Cache Maven dependencies
+      uses: actions/cache@v2
+      with:
+        path: ~/.m2/
+        key: maven-${{ runner.os }}-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          maven-${{ runner.os }}-
 
     - name: Run tests
-      run: mvn -Dtest=LoginTest test
+      run: |
+        if [ -z "${{ github.event.inputs.test_class }}" ]; then
+          mvn test
+        else
+          mvn -Dtest=${{ github.event.inputs.test_class }} test
+        fi
