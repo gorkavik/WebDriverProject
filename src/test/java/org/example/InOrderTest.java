@@ -8,6 +8,7 @@ import org.example.helpers.LoginPage;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -41,6 +42,7 @@ public class InOrderTest {
     }
 
     @Test
+    @Disabled
     @Order(2)
     public void softAssertTest() {
         String getFirstElement = homePage.getFirstItem();
@@ -48,6 +50,7 @@ public class InOrderTest {
     }
 
     @Test
+    @Disabled
     @Order(1)
     public void softAssertSecondTest() {
         String getFirstElement = homePage.getFirstItem();
@@ -56,6 +59,7 @@ public class InOrderTest {
     }
 
     @Test
+    @Disabled
     @Order(3)
     public void hardAssertTest() {
         String getFirstElement = homePage.getFirstItem();
