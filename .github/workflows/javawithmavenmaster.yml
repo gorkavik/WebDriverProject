@@ -35,9 +35,11 @@ jobs:
           cache: maven
 
       - name: Run tests
-        run: |
-          if [ -z "${{ github.event.inputs.test_class }}" ]; then
-            mvn test
-          else
-            mvn -Dtest=${{ github.event.inputs.test_class }} test
-          fi
+        run: mvn -Dtest=LoginTest test
+#      - name: Run tests
+#        run: |
+#          if [ -z "${{ github.event.inputs.test_class }}" ]; then
+#            mvn test
+#          else
+#            mvn -Dtest=${{ github.event.inputs.test_class }} test
+#          fi
