@@ -1,5 +1,3 @@
-package org.example;
-
 import org.example.helpers.ConfProperties;
 import org.example.helpers.HomePage;
 import org.example.helpers.LoginPage;
