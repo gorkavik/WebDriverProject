@@ -39,7 +39,7 @@ jobs:
 #      - name: Run tests
 #        run: |
 #          if [ -z "${{ github.event.inputs.test_class }}" ]; then
-#            mvn test
+#            mvn test -e
 #          else
 #            mvn -Dtest=${{ github.event.inputs.test_class }} test
 #          fi
