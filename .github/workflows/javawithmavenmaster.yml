@@ -16,7 +16,7 @@ on:
       test_class:
         description: 'The test class to run (optional)'
         required: false
-        default: ''
+        default: 'LoginTest'
 
 jobs:
   build:
