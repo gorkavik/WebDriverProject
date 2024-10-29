@@ -31,18 +31,10 @@ jobs:
           chrome-version: 129
           install-chromedriver: true
       - run: chrome --version
-      
-      - name: Cache Maven packages
-        uses: actions/cache@v2
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
             
       - name: Run tests
         env:
-          SELENIUM_HOST: 'fv-az1113-88'
+          SELENIUM_HOST: localhost
           SELENIUM_PORT: 4444
         
         run: 
