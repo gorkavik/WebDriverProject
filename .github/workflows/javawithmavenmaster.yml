@@ -44,7 +44,7 @@ jobs:
       - name: Set up Chrome
         uses: browser-actions/setup-chrome@v1
         with:
-          chrome-version: 130
+          chrome-version: 129
           install-chromedriver: true
       - run: chrome --version
       
