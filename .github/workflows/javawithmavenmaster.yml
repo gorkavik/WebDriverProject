@@ -42,7 +42,10 @@ jobs:
           cache: maven
           
       - name: Set up Chrome
-        uses: browser-actions/setup-chrome@v130.0.6723.69
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: 130
+          install-chromedriver: true
       - run: chrome --version
       
       - name: Cache Maven packages
