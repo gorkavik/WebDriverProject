@@ -42,7 +42,7 @@ jobs:
             
       - name: Run tests
         env:
-          SELENIUM_HOST: localhost
+          SELENIUM_HOST: 'fv-az1113-88'
           SELENIUM_PORT: 4444
         
         run: 
