@@ -38,4 +38,4 @@ jobs:
           SELENIUM_PORT: 4444
         
         run: 
-         mvn -B clean test -Dtest=LoginTest
+         mvn -B clean test -Dtest=LoginTest -X
