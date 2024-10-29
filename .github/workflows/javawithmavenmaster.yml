@@ -24,7 +24,12 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    
+    services:
+      selenium:
+        image: selenium/standalone-chrome
+        ports:
+          - 4444:4444
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -49,6 +54,10 @@ jobs:
             ${{ runner.os }}-maven-
             
       - name: Run tests
+        env:
+          SELENIUM_HOST: localhost
+          SELENIUM_PORT: 4444
+        
         run: |
           if [ -z "${{ github.event.inputs.test_class }}" ]; then
             mvn -B clean test
