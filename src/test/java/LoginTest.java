@@ -28,7 +28,7 @@ public class LoginTest {
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--headless");
 
-        System.setProperty(WEBDRIVER_PROPERTY, ConfProperties.getProperty("chromedriver"));
+//        System.setProperty(WEBDRIVER_PROPERTY, ConfProperties.getProperty("chromedriver"));
         driver = new ChromeDriver(options);
         loginPage = new LoginPage(driver);
         homePage = new HomePage(driver);
