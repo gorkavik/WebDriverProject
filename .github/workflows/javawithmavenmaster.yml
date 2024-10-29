@@ -3,12 +3,6 @@ name: Java CI with Maven Master
 on:
   push:
     branches: [ "master" ]
-  workflow_dispatch:
-    inputs:
-      test_class:
-        description: 'The test class to run (optional)'
-        required: true
-        default: 'LoginTest'
 
 jobs:
   tests:
@@ -37,23 +31,11 @@ jobs:
           chrome-version: 129
           install-chromedriver: true
       - run: chrome --version
-      
-      - name: Cache Maven packages
-        uses: actions/cache@v2
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
             
       - name: Run tests
         env:
           SELENIUM_HOST: localhost
           SELENIUM_PORT: 4444
         
-        run: |
-          if [ -z "${{ github.event.inputs.test_class }}" ]; then
-            mvn -B clean test
-          else
-            mvn -B clean -Dtest=${{ github.event.inputs.test_class }} test
-          fi
+        run: 
+         mvn -B clean test -Dtest=LoginTest
