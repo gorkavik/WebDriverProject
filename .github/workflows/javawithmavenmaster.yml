@@ -3,12 +3,6 @@ name: Java CI with Maven Master
 on:
   push:
     branches: [ "master" ]
-  workflow_dispatch:
-    inputs:
-      test_class:
-        description: 'The test class to run (optional)'
-        required: true
-        default: 'LoginTest'
 
 jobs:
   tests:
@@ -51,9 +45,5 @@ jobs:
           SELENIUM_HOST: localhost
           SELENIUM_PORT: 4444
         
-        run: |
-          if [ -z "${{ github.event.inputs.test_class }}" ]; then
-            mvn -B clean test
-          else
-            mvn -B clean -Dtest=${{ github.event.inputs.test_class }} test
-          fi
+        run: 
+         mvn -B clean test -Dtest=LoginTest
