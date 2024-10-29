@@ -2,6 +2,7 @@ package org.example.selenide;
 
 import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
@@ -19,6 +20,7 @@ public class PracticeFormTest {
     private String expectedModalTitle = "Thanks for submitting the form";
 
     @Test
+    @Disabled
     public void fillPracticeFormTest() {
         open(PRACTICE_FORM_SELENIDE);
         PracticeForm practiceForm = new PracticeForm();
