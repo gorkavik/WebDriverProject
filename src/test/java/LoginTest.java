@@ -1,3 +1,4 @@
+import org.example.cucumber.StepsSearchItems;
 import org.example.helpers.ConfProperties;
 import org.example.helpers.HomePage;
 import org.example.helpers.LoginPage;
@@ -8,6 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.TimeUnit;
 
@@ -20,6 +23,8 @@ public class LoginTest {
     public static HomePage homePage;
     public static WebDriver driver;
     private static String expectedHomePageTitle = "Products";
+
+    private static final Logger log = LoggerFactory.getLogger(StepsSearchItems.class);
 
     @BeforeAll
     public static void setup() {
@@ -39,10 +44,12 @@ public class LoginTest {
 
     @Test
     public void loginTest() {
+        log.info("Тест начинается -- ");
         loginPage.login();
 
         String getPageTitle = homePage.getPageTitle();
-        Assertions.assertEquals( expectedHomePageTitle, getPageTitle, ERROR_MESSAGE_AFTER_LOGIN);
+        Assertions.assertEquals(expectedHomePageTitle, getPageTitle, ERROR_MESSAGE_AFTER_LOGIN);
+        log.info("Тест заканчивается -- getPageTitle=" + getPageTitle);
     }
 
     @AfterAll
