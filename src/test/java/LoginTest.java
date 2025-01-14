@@ -54,6 +54,17 @@ public class LoginTest {
         log.info("Тест заканчивается -- getPageTitle=" + getPageTitle);
     }
 
+    @Test
+    @Step("Второй шаг")
+    public void loginSecondTest() {
+        log.info("Тест начинается -- ");
+        loginPage.login();
+
+        String getPageTitle = homePage.getPageTitle();
+        Assertions.assertEquals(expectedHomePageTitle, getPageTitle, ERROR_MESSAGE_AFTER_LOGIN);
+        log.info("Тест заканчивается -- getPageTitle=" + getPageTitle);
+    }
+
     @AfterAll
     public static void tearDown() {
         driver.quit();
