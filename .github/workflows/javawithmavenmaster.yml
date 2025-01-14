@@ -36,13 +36,6 @@ jobs:
         env:
           SELENIUM_HOST: localhost
           SELENIUM_PORT: 4444
-        run: mvn -B clean test -Dtest=LoginTest -X
-
-      - name: Generate Allure report
-        run: mvn allure:report
-
-      - name: Upload Allure report
-        uses: actions/upload-artifact@v2
-        with:
-          name: allure-report
-          path: target/site/allure-maven-plugin
+        
+        run: 
+         mvn -B clean test -Dtest=LoginTest -X
