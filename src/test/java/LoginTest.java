@@ -1,3 +1,4 @@
+import io.qameta.allure.Step;
 import org.example.cucumber.StepsSearchItems;
 import org.example.helpers.ConfProperties;
 import org.example.helpers.HomePage;
@@ -43,6 +44,7 @@ public class LoginTest {
     }
 
     @Test
+    @Step("Первый шаг")
     public void loginTest() {
         log.info("Тест начинается -- ");
         loginPage.login();
